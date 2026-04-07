@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دعم تطوير المشروع - USDT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #f3ba2f; /* لون باينانس */
+            --bg-color: #0b0e11;
+            --card-bg: #1e2329;
+            --text-color: #eaecef;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            padding: 40px;
+            text-align: center;
+            max-width: 450px;
+            width: 100%;
+            border: 1px solid #333;
+        }
+
+        .usdt-logo {
+            width: 80px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #b7bdc6;
+            margin-bottom: 25px;
+        }
+
+        .network-badge {
+            display: inline-block;
+            background: var(--primary-color);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        .address-container {
+            background: #2b3139;
+            padding: 15px;
+            border-radius: 8px;
+            word-break: break-all;
+            font-family: monospace;
+            font-size: 14px;
+            border: 1px dashed var(--primary-color);
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .address-container:hover {
+            background: #363c44;
+        }
+
+        .btn-copy {
+            background-color: var(--primary-color);
+            color: #000;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .btn-copy:hover {
+            transform: scale(1.02);
+            opacity: 0.9;
+        }
+
+        .footer-note {
+            margin-top: 25px;
+            font-size: 11px;
+            color: #707a8a;
+        }
+
+        /* تنبيه النسخ */
+        #toast {
+            visibility: hidden;
+            min-width: 200px;
+            background-color: #00c087;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 10px;
+            position: fixed;
+            z-index: 1;
+            bottom: 30px;
+            font-size: 14px;
+        }
+
+        #toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT Logo" class="usdt-logo">
+    <h2>دعم المشروع</h2>
+    <p>مساهمتك تساعدنا على الاستمرار في تطوير أدوات مفتوحة المصدر واحترافية. شكراً لك!</p>
+    
+    <div class="network-badge">شبكة BEP20 (BSC) حصرية</div>
+    
+    <div class="address-container" id="walletAddress" onclick="copyAddress()">
+        0x021E6370a3576fd433151A109F09b96D792f6519
+    </div>
+    
+    <button class="btn-copy" onclick="copyAddress()">نسخ عنوان المحفظة</button>
+    
+    <div class="footer-note">
+        * تنبيه: يرجى التأكد من اختيار شبكة <b>Binance Smart Chain (BEP20)</b> لتجنب فقدان الأصول.
+    </div>
+</div>
+
+<div id="toast">تم النسخ بنجاح! ✅</div>
+
+<script>
+    function copyAddress() {
+        const address = "0x021E6370a3576fd433151A109F09b96D792f6519";
+        navigator.clipboard.writeText(address).then(() => {
+            const toast = document.getElementById("toast");
+            toast.className = "show";
+            setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
+        });
+    }
+</script>
+
+</body>
+</html>
